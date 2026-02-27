@@ -17,3 +17,13 @@ This repository contains sample security review reports demonstrating:
 ## Note
 
 These are demonstration reports intended to showcase reporting format and analytical structure.
+
+## Severity Classification
+
+| Level   | Description |
+|----------|-------------|
+| Critical | Direct fund loss / permanent protocol damage |
+| High     | Major economic or privilege escalation risk |
+| Medium   | State manipulation or griefing vector |
+| Low      | Code quality / minor logic inconsistency |
+| Info     | Gas, readability or best practice note |
