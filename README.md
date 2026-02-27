@@ -14,6 +14,20 @@ This repository contains sample security review reports demonstrating:
 3. Classify severity based on impact and exploitability
 4. Provide actionable mitigation steps
 
+## Methodology (Reachability-first)
+
+For each finding I label **reachability**:
+
+- **R (Reachable):** exploitable by any external attacker without privileged cooperation.
+- **A (Assisted):** requires admin/owner action, compromised key, phishing, governance vote, or privileged cooperation.
+- **U (Unreachable):** not exploitable under the stated code/assumptions (blocked by requires or missing call paths).
+
+I separate outcomes by impact:
+- Upgrade takeover
+- Theft / drain
+- Permanent freeze / DoS
+- Configuration-only / operational risk
+
 ## Note
 
 These are demonstration reports intended to showcase reporting format and analytical structure.
@@ -27,3 +41,4 @@ These are demonstration reports intended to showcase reporting format and analyt
 | Medium   | State manipulation or griefing vector |
 | Low      | Code quality / minor logic inconsistency |
 | Info     | Gas, readability or best practice note |
+
