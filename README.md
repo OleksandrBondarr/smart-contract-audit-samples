@@ -1,44 +1,83 @@
 # Smart Contract Audit Samples
 
-This repository contains sample security review reports demonstrating:
+This repository contains sample smart contract security review reports demonstrating:
 
 - Structured findings
-- Severity classification (High / Medium / Low)
+- Severity classification (Critical / High / Medium / Low / Info)
+- Reachability-based exploit analysis (R / A / U)
 - Clear impact explanation
 - Practical remediation guidance
 
-## Methodology
+---
 
-1. Review contract logic and privilege structure
-2. Identify attack paths and state manipulation vectors
-3. Classify severity based on impact and exploitability
-4. Provide actionable mitigation steps
+## Review Approach
 
-## Methodology (Reachability-first)
+### 1. Scope & Assumptions
+Each review defines:
+- Contract scope
+- Trust assumptions (owner, admin, governance)
+- External dependencies (oracles, proxies, integrations)
 
-For each finding I label **reachability**:
+### 2. Logic & Privilege Analysis
+- Review state transitions
+- Analyze access control structure
+- Identify upgrade paths and privilege escalation vectors
+
+### 3. Attack Surface & Exploit Modeling
+- Identify potential attack paths
+- Evaluate state manipulation vectors
+- Consider economic abuse scenarios
+
+### 4. Severity & Impact Classification
+Issues are classified based on:
+- Exploitability
+- Impact on funds or protocol integrity
+- Required privileges
+
+---
+
+## Reachability Model (R / A / U)
+
+Each finding includes strict reachability labeling:
 
 - **R (Reachable):** exploitable by any external attacker without privileged cooperation.
 - **A (Assisted):** requires admin/owner action, compromised key, phishing, governance vote, or privileged cooperation.
-- **U (Unreachable):** not exploitable under the stated code/assumptions (blocked by requires or missing call paths).
+- **U (Unreachable):** not exploitable under stated assumptions (blocked by require conditions or missing call paths).
 
-I separate outcomes by impact:
+If an exploit depends on a prior Assisted step, the overall reachability remains **A**.
+
+---
+
+## Impact Categories
+
 - Upgrade takeover
-- Theft / drain
+- Theft / fund drain
 - Permanent freeze / DoS
 - Configuration-only / operational risk
 
-## Note
-
-These are demonstration reports intended to showcase reporting format and analytical structure.
+---
 
 ## Severity Classification
 
-| Level   | Description |
-|----------|-------------|
-| Critical | Direct fund loss / permanent protocol damage |
-| High     | Major economic or privilege escalation risk |
-| Medium   | State manipulation or griefing vector |
-| Low      | Code quality / minor logic inconsistency |
-| Info     | Gas, readability or best practice note |
+| Level     | Description |
+|-----------|-------------|
+| Critical  | Direct fund loss or permanent protocol damage |
+| High      | Major economic risk or privilege escalation |
+| Medium    | State manipulation or griefing vector |
+| Low       | Minor logic inconsistency or risk exposure |
+| Info      | Gas optimization or best practice note |
 
+---
+
+## Tooling & Workflow
+
+Reviews may involve:
+- Foundry (forge build / test)
+- Static reasoning
+- Structured multi-step analysis workflow
+
+---
+
+## Disclaimer
+
+These reports are demonstration examples intended to showcase reporting format and analytical methodology.
