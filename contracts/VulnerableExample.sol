@@ -28,3 +28,7 @@ contract VulnerableExample {
 
     receive() external payable {}
 }
+
+// VULNERABILITY 1: Missing access control
+// VULNERABILITY 2: Potential reentrancy
+// VULNERABILITY 3: Unsafe external call before state update
